@@ -23,7 +23,7 @@ namespace BH.Engine.XML
         {
             List<BHE.BuildingElement> bElement = new List<oM.Environmental.Elements.BuildingElement>();
 
-            foreach (Guid guid in newBuildingElements.Select(x => x.BHoM_Guid)) 
+            foreach (Guid guid in newBuildingElements.Select(x => x.BHoM_Guid))
             {
                 if (oldBuildingElements.Select(x => x.BHoM_Guid).Contains(guid))
                 {
@@ -40,29 +40,58 @@ namespace BH.Engine.XML
 
         public static BHE.Building UpdateBuildingElement(this List<BHE.BuildingElement> bes, BHE.Building building)
         {
-            //BHE.Building newBuilding = building.GetShallowClone() as BHE.Building;
-
+            BHE.Building newBuilding = building.GetShallowClone() as BHE.Building;
+            List<BHE.Space> updatedSpaces = new List<oM.Environmental.Elements.Space>();
 
             //Update the spaces
             foreach (BHE.BuildingElement be in bes)
             {
-                BHE.Space space = building.Spaces.Find(x => x.BHoM_Guid == be.AdjacentSpaces.FirstOrDefault());
+                BHE.Space space = newBuilding.Spaces.Find(x => x.BHoM_Guid == be.AdjacentSpaces.FirstOrDefault());
+                int index = newBuilding.Spaces.IndexOf(space);
+
+                if (space == null)
+                    continue;
 
                 BHE.BuildingElement toRemove = space.BuildingElements.Find(x => x.BHoM_Guid == be.BHoM_Guid);
 
-                space.BuildingElements.Remove(toRemove);
-                space.BuildingElements.Add(be);
+                newBuilding.Spaces[index].BuildingElements.Remove(toRemove);
+                newBuilding.Spaces[index].BuildingElements.Add(be);
 
-                //Update the building
-                BHE.Space spaceToRemove = building.Spaces.Find(x => x.BHoM_Guid == space.BHoM_Guid);
-                building.Spaces.Remove(spaceToRemove);
-                building.Add(space);
+                newBuilding.BuildingElements.Remove(toRemove);
+                newBuilding.BuildingElements.Add(be);
             }
 
-            return building;
+            return newBuilding;
         }
 
         /***************************************************/
+
+        public static BHE.Building RemoveBuildingElement(this List<BHE.BuildingElement> bes, BHE.Building building)
+        {
+            BHE.Building newBuilding = building.GetShallowClone() as BHE.Building;
+            List<BHE.Space> updatedSpaces = new List<oM.Environmental.Elements.Space>();
+
+            //Update the spaces
+            foreach (BHE.BuildingElement be in bes)
+            {
+                BHE.Space space = newBuilding.Spaces.Find(x => x.BHoM_Guid == be.AdjacentSpaces.FirstOrDefault());
+                int index = newBuilding.Spaces.IndexOf(space);
+
+                if (space == null)
+                {
+                    newBuilding.BuildingElements.Remove(be); //Remove shade element
+                    continue;
+                }
+                else
+                {
+                    BHE.BuildingElement toRemove = space.BuildingElements.Find(x => x.BHoM_Guid == be.BHoM_Guid);
+                    newBuilding.Spaces[index].BuildingElements.Remove(toRemove);
+                    newBuilding.BuildingElements.Remove(toRemove);
+                }
+            }
+
+            return newBuilding;
+        }
     }
 }
 

@@ -134,7 +134,13 @@ namespace BH.Engine.XML
                     if (newBe.BuildingElementProperties == null)
                     {
                         newBe.BuildingElementProperties = new BHP.BuildingElementProperties();
-                        newBe.BuildingElementProperties.Name = be3.BuildingElementProperties.Name;
+                        try
+                        {
+                            newBe.BuildingElementProperties.Name = be3.BuildingElementProperties.Name;
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
 
 

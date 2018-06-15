@@ -72,6 +72,7 @@
     <Compile Include="Convert\gbXMLTypes.cs" />
     <Compile Include="Convert\ToBHoM.cs" />
     <Compile Include="Convert\ToGbXML.cs" />
+    <Compile Include="Modify\Temporary.cs" />
     <Compile Include="Modify\CadObjectId.cs" />
     <Compile Include="Modify\gbXMLCleanUp\gbXMLCleanUp.cs" />
     <Compile Include="Modify\gbXMLCleanUp\CleanUpUtility.cs" />

@@ -16,6 +16,10 @@ using BH.Engine.Serialiser;
 
 using BH.Engine.XML;
 
+using System.Xml.Serialization;
+using System.Xml;
+using System.IO;
+
 namespace XML_Engine.Modify
 {
     public static partial class Modify
@@ -488,6 +492,72 @@ namespace XML_Engine.Modify
             return (Building)BH.Engine.Serialiser.Convert.FromBson(bd);
         }
 
+        public static Dictionary<String, double> BuildBEThicknessDictionary(List<String> strings)
+        {
+            Dictionary<String, double> rtn = new Dictionary<string, double>();
+
+            foreach(String s in strings)
+            {
+                String[] d = s.Split(',');
+                if (!rtn.ContainsKey(d[0]))
+                    rtn.Add(d[0], System.Convert.ToDouble(d[1]));
+            }
+
+            return rtn;
+        }
+
+        public static Building AddBEThickness(this Building building, Dictionary<String, double> thicknesses)
+        {
+            building = building.BreakReferenceClone();
+
+            foreach (Space s in building.Spaces)
+            {
+                foreach(BuildingElement be in s.BuildingElements)
+                {
+                    if (thicknesses.ContainsKey(be.Name))
+                        be.BuildingElementProperties.Thickness = thicknesses[be.Name];
+                }
+            }
+
+            foreach(BuildingElement be in building.BuildingElements)
+            {
+                if (thicknesses.ContainsKey(be.Name))
+                    be.BuildingElementProperties.Thickness = thicknesses[be.Name];
+            }
+
+            return building;
+        }
+
+        public static List<String> MissingThickness(this Building building)
+        {
+            building = building.BreakReferenceClone();
+
+            List<string> rtn = new List<string>();
+
+            foreach(Space s in building.Spaces)
+            {
+                foreach(BuildingElement be in s.BuildingElements)
+                {
+                    if(be.BuildingElementProperties.Thickness == 0)
+                    {
+                        if (!rtn.Contains(be.Name))
+                            rtn.Add(be.Name);
+                    }
+                }
+            }
+
+            foreach (BuildingElement be in building.BuildingElements)
+            {
+                if (be.BuildingElementProperties.Thickness == 0)
+                {
+                    if (!rtn.Contains(be.Name))
+                        rtn.Add(be.Name);
+                }
+            }
+
+            return rtn;
+        }
+
         public static bool Contains<T>(this List<T> list, List<T> objects)
         {
             bool containsAll = true;
@@ -504,6 +574,44 @@ namespace XML_Engine.Modify
                 containsAll &= p.OnePointMatchesTol(list);
 
             return containsAll;
+        }
+
+        public static bool TestArgyle(this String directory, String filename)
+        {
+            BH.oM.XML.report rpt = new BH.oM.XML.report();
+            try
+            {
+                filename += ".xml";
+                XmlSerializerNamespaces xns = new XmlSerializerNamespaces();
+                XmlSerializer szer = new XmlSerializer(typeof(BH.oM.XML.report));
+                TextWriter ms = new StreamWriter(Path.Combine(directory, filename));
+                szer.Serialize(ms, rpt, xns);
+                ms.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public static bool TestElmhurst(this String directory, String filename)
+        {
+            BH.oM.XML.ImportExportRecord rpt = new BH.oM.XML.ImportExportRecord();
+            try
+            {
+                filename += ".xml";
+                XmlSerializerNamespaces xns = new XmlSerializerNamespaces();
+                XmlSerializer szer = new XmlSerializer(typeof(BH.oM.XML.ImportExportRecord));
+                TextWriter ms = new StreamWriter(Path.Combine(directory, filename));
+                szer.Serialize(ms, rpt, xns);
+                ms.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

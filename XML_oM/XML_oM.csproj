@@ -40,9 +40,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="gbXMLObjects.cs" />
+    <Compile Include="ArgyleXML\argyleBuildingObject.cs" />
+    <Compile Include="ArgyleXML\argyleCLAObject.cs" />
+    <Compile Include="ArgyleXML\argyleDimObject.cs" />
+    <Compile Include="ArgyleXML\argyleFloObject.cs" />
+    <Compile Include="ArgyleXML\argyleGenObject.cs" />
+    <Compile Include="ArgyleXML\argyleMaihsObject.cs" />
+    <Compile Include="ArgyleXML\argyleOpeningObject.cs" />
+    <Compile Include="ArgyleXML\argyleRooObject.cs" />
+    <Compile Include="ArgyleXML\argyleSctterDataObject.cs" />
+    <Compile Include="ArgyleXML\argyleSehsObject.cs" />
+    <Compile Include="ArgyleXML\argyleSpecialFeatureObject.cs" />
+    <Compile Include="ArgyleXML\argyleTableObject.cs" />
+    <Compile Include="ArgyleXML\argyleTBObject.cs" />
+    <Compile Include="ArgyleXML\argyleVentObject.cs" />
+    <Compile Include="ArgyleXML\argyleWalObject.cs" />
+    <Compile Include="ArgyleXML\argyleWathsObject.cs" />
+    <Compile Include="ArgyleXML\argyleWindTurbnineObject.cs" />
+    <Compile Include="ArgyleXML\argyleXMLObjects.cs" />
+    <Compile Include="ElmhurstXML\elmhurstBuildingPartObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstCommunityHeatingObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstPropertiesObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstPropertyObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstStandardHeightObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstStandardWidthObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstSurveyorsObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstSurveysObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstWaterHeatingSystemObject.cs" />
+    <Compile Include="ElmhurstXML\elmhurstXMLObjects.cs" />
+    <Compile Include="ElmhurstXML\emlhurstOpeningObjects.cs" />
+    <Compile Include="gbXML\gbXMLObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

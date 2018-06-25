@@ -72,7 +72,7 @@ namespace BH.Adapter.gbXML
         /***************************************************/
         /**** Private Methods                           ****/
         /***************************************************/
-        private static BHG.PolyCurve MakeCurveGroup(Polyloop ploop)
+        public static BHG.PolyCurve MakeCurveGroup(Polyloop ploop)
         {
             List<BHG.Point> pts = new List<BH.oM.Geometry.Point>();
             if (1 <= ploop.CartesianPoint.Count())

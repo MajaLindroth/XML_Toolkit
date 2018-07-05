@@ -106,6 +106,7 @@
     <Compile Include="Query\Length.cs" />
     <Compile Include="Query\Width.cs" />
     <Compile Include="Query\ExposedToSun.cs" />
+    <Compile Include="Test\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XML_oM\XML_oM.csproj">

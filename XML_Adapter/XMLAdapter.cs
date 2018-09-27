@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;                             
 
 using BH.Engine;
 using BH.oM.Base;
@@ -39,7 +39,7 @@ namespace BH.Adapter.XML
             return success ? objects.ToList() : new List<IObject>();
         }
 
-        private String FilePath { get; set; }
-        private String FileName { get; set; }
+        public String FilePath { get; set; }
+        public String FileName { get; set; }
     }
 }

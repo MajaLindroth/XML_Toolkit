@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using BH.Adapter.XML;
-using BH.Engine.XML;
+// BH.Engine.XML;
 
 using BH.oM.Environment.Elements;
 
@@ -14,7 +14,7 @@ namespace BH.Test.XML
 {
     [TestClass]
     public partial class Create
-    {
+    {/*
         [TestMethod]
         public void TestCreate_CartesianPoint_String()
         {
@@ -77,6 +77,6 @@ namespace BH.Test.XML
                 Assert.IsTrue(pt.Coordinate[1].Equals(y.ToString()));
                 Assert.IsTrue(pt.Coordinate[2].Equals(z.ToString()));
             }
-        }
+        }*/
     }
 }

@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using BH.Adapter.XML;
-using BH.Engine.XML;
+//using BH.Adapter.XML;
+//using BH.Engine.XML;
 
 using BH.oM.Environment.Elements;
 
 using System.Collections.Generic;
 
 using BH.oM.XML;
-
+/*/
 namespace BH.Test.XML
 {
     [TestClass]

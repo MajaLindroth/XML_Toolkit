@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Adapter\CRUD\AdapterCreate.cs" />
     <Compile Include="Engine\Convert\Architecture_oM\Level.cs" />
+    <Compile Include="Engine\Convert\Geometry_oM\Point.cs" />
     <Compile Include="Engine\Convert\ToBHoM_CartesianPoint.cs" />
     <Compile Include="Engine\Convert\ToBHoM_Polyloop.cs" />
     <Compile Include="Engine\Convert\ToGBXMLType_SurfaceType.cs" />
@@ -101,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Engine\Convert\Environment_oM\" />
-    <Folder Include="Engine\Convert\Geometry_oM\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

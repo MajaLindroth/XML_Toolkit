@@ -78,7 +78,6 @@
     <Compile Include="Engine\Convert\Architecture_oM\Level.cs" />
     <Compile Include="Engine\Convert\Geometry_oM\Point.cs" />
     <Compile Include="Engine\Convert\Geometry_oM\Polyline.cs" />
-    <Compile Include="Engine\Convert\ToBHoM_Polyloop.cs" />
     <Compile Include="Engine\Convert\ToGBXMLType_SurfaceType.cs" />
     <Compile Include="Engine\Create\CartesianPoint.cs" />
     <Compile Include="Engine\Modify\CADObjectID.cs" />

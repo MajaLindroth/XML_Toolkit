@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Adapter\CRUD\AdapterCreate.cs" />
     <Compile Include="Engine\Convert\Architecture_oM\Level.cs" />
+    <Compile Include="Engine\Convert\Environment_oM\AbsorptanceType.cs" />
     <Compile Include="Engine\Convert\Geometry_oM\Point.cs" />
     <Compile Include="Engine\Convert\Geometry_oM\Polyline.cs" />
     <Compile Include="Engine\Convert\ToGBXMLType_SurfaceType.cs" />
@@ -99,9 +100,7 @@
       <Name>XML_oM</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Engine\Convert\Environment_oM\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
